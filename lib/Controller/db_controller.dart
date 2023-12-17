@@ -17,6 +17,8 @@ class DbController extends GetxController {
   RxList<NoteModel> notesList = RxList<NoteModel>();
   TextEditingController title = TextEditingController();
   TextEditingController des = TextEditingController();
+  TextEditingController titleDetails = TextEditingController();
+  TextEditingController desDetails = TextEditingController();
 
   Future<void> getNotes() async {
     var response = await http.get(
@@ -53,4 +55,18 @@ class DbController extends GetxController {
       print("Please enter something");
     }
   }
-}
+
+  Future<void> deleteNotes(String id) async {
+    var newUrl = "https://657dcb6f3e3f5b1894632a76.mockapi.io/note/$id";
+    final response = await http.delete(Uri.parse(newUrl));
+    if (response.statusCode == 200) {
+      print("Note delete");
+      getNotes();
+      Get.back();
+    }
+  }
+  
+  // Future<void> updateNotes()async{
+   
+  // }
+ }

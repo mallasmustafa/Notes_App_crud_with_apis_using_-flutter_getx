@@ -1,5 +1,5 @@
 import 'package:crud_getx/Models/note_model.dart';
-import 'package:crud_getx/views/new_notes.dart';
+import 'package:crud_getx/views/notes_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
@@ -12,7 +12,7 @@ class NoteWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(NewNotes());
+        Get.to(NotesDetails(noteModel: note));
       },
       child: Container(
         padding: const EdgeInsets.all(10),
