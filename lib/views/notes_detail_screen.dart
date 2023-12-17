@@ -66,9 +66,10 @@ class NotesDetails extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  controller.addNotes();
+                  controller.updateNotes(noteModel.id!);
+                  Get.back();
                 },
-                child: Text("S A V E"))
+                child: Text("U P D A T E NOTE"))
           ],
         ),
       ),

@@ -51,6 +51,7 @@ class NewNotes extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   controller.addNotes();
+                  Get.back();
                 },
                 child: Text("S A V E"))
           ],

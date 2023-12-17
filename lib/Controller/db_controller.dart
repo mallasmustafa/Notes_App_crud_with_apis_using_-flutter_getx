@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:crud_getx/Models/note_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -65,8 +64,19 @@ class DbController extends GetxController {
       Get.back();
     }
   }
-  
-  // Future<void> updateNotes()async{
-   
-  // }
- }
+
+  Future<void> updateNotes(String id) async {
+    var newUrl = "https://657dcb6f3e3f5b1894632a76.mockapi.io/note/$id";
+    var updatedNotes = NoteModel(
+      title: titleDetails.text,
+      description: desDetails.text,
+    );
+    var response = await http.put(Uri.parse(newUrl),
+        body: jsonEncode(updatedNotes.toJson()),
+        headers: {"Content-type": "application/json"});
+    if (response.statusCode == 200) {
+      print("Note updated");
+      getNotes();
+    }
+  }
+}
